@@ -1,11 +1,23 @@
+# 注意这个文件名一定要叫bootstrap.yml文件, 因为它是在程序程序启动一开始就加载的,顺序在application.yml文件前
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:1001/eureka/
+
 spring:
   application:
     name: config-client
   cloud:
     config:
-      uri: http://localhost:1201/
-      profile: default
+      # 指定要获取配置文件后缀
+      profile: test
+      discovery:
+        enabled: true
+        service-id: config-server
       label: master
 
 server:
   port: 2002
+
+
